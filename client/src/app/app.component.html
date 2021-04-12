@@ -1,9 +1,17 @@
 <app-nav-bar></app-nav-bar>
 <div class="container" style="margin-top: 140px;">
     <h1>Welcome to {{ title }}!</h1>
-    <ul>
-        <li class="list-unstyled" *ngFor="let product of products">
-            {{product.name}}
-        </li>
-    </ul>
+    <app-shop></app-shop>
 </div>
+<!-- 
+<div style="left:50px; top:20px;">
+    <app-box #startingElement>Starting Element</app-box>
+</div>
+<div style="left:200px; top:120px;">
+    <app-box #endingElement>Ending Element</app-box>
+</div>
+<div style="left:200px; top:250px;">
+    <app-box #endingElement1>Ending Element</app-box>
+</div>
+<div id="start">start</div>
+<div id="end">end</div> -->
