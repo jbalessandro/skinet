@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
+import { ShopComponent } from './shop.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ProdutDetailsComponent } from './produt-details/produt-details.component';
+
+const routes: Routes = [
+  { path: '', component: ShopComponent },
+  { path: ':id', component: ProdutDetailsComponent },
+];
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    SharedModule
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
   ]
 })
 export class ShopRoutingModule { }
