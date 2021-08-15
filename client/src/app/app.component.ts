@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BasketService } from './basket/basket.service';
 
 //declare var LeaderLine: any;
 
@@ -7,20 +8,18 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
-  constructor() {}
+  constructor(private basketService: BasketService) {}
 
-  //tipos: number[] = [1,2,3];
-  //@ViewChild('startingElement', { read: ElementRef }) startingElement: ElementRef;
-  //@ViewChild('endingElement', { read: ElementRef }) endingElement: ElementRef;
-  //@ViewChild('endingElement1', { read: ElementRef }) endingElement1: ElementRef;
-  // ngAfterViewInit(): void {
-  //   // const line = new LeaderLine(this.startingElement.nativeElement, this.endingElement.nativeElement);
-  //   // const line1 = new LeaderLine(this.endingElement.nativeElement, this.endingElement1.nativeElement);
-  //   // new LeaderLine(
-  //   //   document.getElementById('start'),
-  //   //   document.getElementById('end')
-  //   // );
-  // }
+  ngOnInit(): void {
+    const basketId = localStorage.getItem('basket_id');
+    if (basketId) {
+      this.basketService.getBasket(basketId).subscribe(() => {
+        console.log('initilised basket');
+      }, error => {
+        console.log(error);
+      });
+    }
+  }
 }
